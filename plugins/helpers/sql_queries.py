@@ -40,3 +40,19 @@ class SqlQueries:
                extract(month from start_time), extract(year from start_time), extract(dayofweek from start_time)
         FROM songplays
     """)
+
+    users_table_null_count = ("""
+        SELECT COUNT(*) from users WHERE userid IS NULL
+    """)
+
+    songs_table_null_count = ("""
+        SELECT COUNT(*) from songs WHERE songid IS NULL
+    """)
+
+    artists_table_null_count = ("""
+        SELECT COUNT(*) from artists WHERE artistid IS NULL
+    """)
+
+    time_table_null_count = ("""
+        SELECT COUNT(*) from time WHERE start_time IS NULL
+    """)
