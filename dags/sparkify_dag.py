@@ -91,9 +91,18 @@ load_time_dimension_table = LoadDimensionOperator(
     select_data_query=SqlQueries.time_table_insert
 )
 
+checks = [
+    { 'name': 'Check users table null counts', 'sql': SqlQueries.users_table_null_count, 'expected': 0 },
+    { 'name': 'Check songs table null counts', 'sql': SqlQueries.songs_table_null_count, 'expected': 0 },
+    { 'name': 'Check artists table null counts', 'sql': SqlQueries.artists_table_null_count, 'expected': 0 },
+    { 'name': 'Check time table null counts', 'sql': SqlQueries.time_table_null_count, 'expected': 0 }
+]
+
 run_quality_checks = DataQualityOperator(
     task_id='Run_data_quality_checks',
-    dag=dag
+    dag=dag,
+    redshift_conn_id='redshift',
+    checks=checks
 )
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
