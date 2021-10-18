@@ -12,7 +12,7 @@ Apache Airflow is used as the tool to create data pipelines that are dynamic and
 ## Datasets
 Following are the input datasets of this project:
 
-Log data: s3://udacity-dend/log_data
+Log data: s3://udacity-dend/log_data  
 Song data: s3://udacity-dend/song_data
 
 ### Song Dataset
